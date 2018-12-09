@@ -5,10 +5,18 @@ using UnityEngine;
 public class UrchinUnit : MonoBehaviour {
     private CircleCollider2D circCol;
     private float speedRotate;
+    public float directLeftLimit;
+    public float directRightLimit;
+    private Transform bodyUrchin;
+    private Animator anim;
+    private Rigidbody2D rb;
 
     void Start()
     {
         circCol = GetComponent<CircleCollider2D>();
+        bodyUrchin = transform.Find("body");
+        anim = bodyUrchin.GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -25,6 +33,12 @@ public class UrchinUnit : MonoBehaviour {
     {
         Vector3 to = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
         transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, to, Time.deltaTime * speedRotate);
+    }
+    public void DropUrchin(float force)
+    {
+        anim.SetBool("Click", true);
+        Vector2 direct = new Vector2(Random.Range(directLeftLimit,directRightLimit), 1);
+        rb.AddForce(force * direct, ForceMode2D.Impulse);
     }
 
 }
