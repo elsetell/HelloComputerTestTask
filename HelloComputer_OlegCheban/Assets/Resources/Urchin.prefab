@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4711120438752158}
   - component: {fileID: 212684252115117712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212434989692539326}
   - component: {fileID: 95241974057899254}
   - component: {fileID: 114517140698168012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114886555592314168}
   - component: {fileID: 50306412166779770}
   - component: {fileID: 58386564817521712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Urchin
   m_TagString: Urchin
   m_Icon: {fileID: 0}
