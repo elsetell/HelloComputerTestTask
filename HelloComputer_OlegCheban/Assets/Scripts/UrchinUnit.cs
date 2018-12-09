@@ -5,22 +5,25 @@ using UnityEngine;
 public class UrchinUnit : MonoBehaviour {
     [SerializeField]
     private LifeUrchinSettings gSettings;
+    private Rigidbody2D rb;
 
     private CircleCollider2D circCol;
+    private float startR;
     private Transform bodyUrchin;
     private Animator anim;
-    private Rigidbody2D rb;
 
     void Start()
     {
-        circCol = GetComponent<CircleCollider2D>();
         bodyUrchin = transform.Find("body");
+        circCol = GetComponent<CircleCollider2D>();
         anim = bodyUrchin.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        startR = circCol.radius;
     }
 
     private void Update()
     {
+        circCol.radius = startR * bodyUrchin.localScale.x;
         if (CheckGround())
             RotateToFeet();
     }
