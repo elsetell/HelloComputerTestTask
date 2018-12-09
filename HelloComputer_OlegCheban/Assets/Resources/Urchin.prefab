@@ -179,8 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edcaadf4093f22c46aace41b181966c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directLeftLimit: 0
-  directRightLimit: 0
+  gSettings: {fileID: 11400000, guid: 76981b2e256d8734aab0a3bc4c8b7978, type: 2}
 --- !u!212 &212434989692539326
 SpriteRenderer:
   m_ObjectHideFlags: 1

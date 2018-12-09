@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UrchinControl : MonoBehaviour {
-    public float minScale;
-    public float maxScale;
-    public float minForce;
-    public float maxForce;
+    [SerializeField]
+    private ControlUrchinSettings controllSettings;
 
     void Update()
     {
@@ -15,7 +13,7 @@ public class UrchinControl : MonoBehaviour {
             RaycastHit2D hit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if (hit.collider != null && hit.collider.tag == "Urchin")
             {
-                float force = Random.Range(minForce, maxForce);
+                float force = Random.Range(controllSettings.minForce, controllSettings.maxForce);
                 hit.transform.GetComponent<UrchinUnit>().DropUrchin(force);
             }
             else
@@ -29,7 +27,7 @@ public class UrchinControl : MonoBehaviour {
     {
         Vector2 posSpawn = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GameObject urchin = (GameObject)Instantiate(Resources.Load("urchin"), posSpawn, Quaternion.identity);
-        float scaleUrchin = Random.Range(minScale, maxScale);
+        float scaleUrchin = Random.Range(controllSettings.minScale, controllSettings.maxScale);
         urchin.transform.localScale = new Vector3(scaleUrchin, scaleUrchin, scaleUrchin);
     }
 }

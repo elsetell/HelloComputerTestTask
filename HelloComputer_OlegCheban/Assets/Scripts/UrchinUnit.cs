@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UrchinUnit : MonoBehaviour {
+    [SerializeField]
+    private LifeUrchinSettings gSettings;
+
     private CircleCollider2D circCol;
-    private float speedRotate;
-    public float directLeftLimit;
-    public float directRightLimit;
     private Transform bodyUrchin;
     private Animator anim;
     private Rigidbody2D rb;
@@ -32,12 +32,12 @@ public class UrchinUnit : MonoBehaviour {
     void RotateToFeet()
     {
         Vector3 to = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
-        transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, to, Time.deltaTime * speedRotate);
+        transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, to, Time.deltaTime * gSettings.speedRotate);
     }
     public void DropUrchin(float force)
     {
         anim.SetBool("Click", true);
-        Vector2 direct = new Vector2(Random.Range(directLeftLimit,directRightLimit), 1);
+        Vector2 direct = new Vector2(Random.Range(gSettings.directLeftLimit, gSettings.directRightLimit), 1);
         rb.AddForce(force * direct, ForceMode2D.Impulse);
     }
 
